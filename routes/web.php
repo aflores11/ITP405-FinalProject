@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SmiteAPI;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
 
@@ -14,11 +15,16 @@ use Illuminate\Support\Facades\URL;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 if (env('APP_ENV') !== 'local') {
     URL::forceScheme('https');
 }
+
+
+Route::get('/', [SmiteAPI::class, 'motd'])->name('home');
+
+Route::get('/gods', function () {
+    return view('characters.show');
+})->name('gods');
+
+
 
