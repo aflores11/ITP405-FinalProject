@@ -16,8 +16,11 @@
                 <a class="nav-item nav-link" style="color: #D4D4D4" href="/">RANDOMIZE!</a>
                 <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route('gods') }}">GODS</a>
                 @if(Auth::check())
-                    <a class="nav-item nav-link" style="color: #D4D4D4" href="/">PROFILE</a>    
-                    <a class="nav-item nav-link" style="color: #D4D4D4" href="/">LOGOUT</a>   
+                    <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route('profile.index') }}">PROFILE</a>    
+                    <form method="post" action="{{ route('auth.logout') }}">
+                        @csrf
+                        <button type="submit" class="nav-item nav-link" style="color: #D4D4D4; background-color: Transparent; border: none;">LOGOUT</button>
+                    </form>   
                 @else
                     <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route('auth.loginForm') }}">SIGN IN</a>
                     <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route('registration.index') }}">REGISTER</a>
