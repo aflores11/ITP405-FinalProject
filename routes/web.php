@@ -3,6 +3,8 @@
 use App\Http\Controllers\SmiteAPI;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +23,18 @@ if (env('APP_ENV') !== 'local') {
 
 
 Route::get('/', [SmiteAPI::class, 'motd'])->name('home');
+Route::get('/register',[RegistrationController::class, 'index'])-> name('registration.index');
+Route::post('/register',[RegistrationController::class, 'register'])-> name('registration.create');
+Route::get('/login',[AuthController::class, 'loginForm'])-> name('auth.loginForm');
+Route::post('/login',[AuthController::class, 'login'])-> name('auth.login');
 
 Route::get('/gods', function () {
     return view('characters.show');
 })->name('gods');
+
+Route::get('/about', function () {
+    return view('landing.about');
+})->name('about');
 
 
 

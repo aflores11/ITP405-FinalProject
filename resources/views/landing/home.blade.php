@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title','')
+@section('title','Home Page')
 
 @section('content')
     <div class="d-flex flex-column text-center">
@@ -27,7 +27,6 @@
                     </tr>
                 @endforeach
             </table>
-           
         </div>  
     </div>
 @endsection

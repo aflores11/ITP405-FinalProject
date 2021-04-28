@@ -8,19 +8,28 @@
     <title>@yield('title')</title>
 </head>
 <body style="background-color:#404040;">
-    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="{{ route('home') }}">HOME</a>
-            <a class="navbar-brand" href="/">RANDOMIZE!</a>
-            <a class="navbar-brand" href="{{ route('gods') }}">GODS</a>
-            <a class="navbar-brand" href="/">SIGN IN</a>
+            {{-- <div class ="navbar-nav"> --}}
+                <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route('home') }}">HOME</a>
+                <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route('about') }}">ABOUT</a>
+                <a class="nav-item nav-link" style="color: #D4D4D4" href="/">RANDOMIZE!</a>
+                <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route('gods') }}">GODS</a>
+                @if(Auth::check())
+                    <a class="nav-item nav-link" style="color: #D4D4D4" href="/">PROFILE</a>    
+                    <a class="nav-item nav-link" style="color: #D4D4D4" href="/">LOGOUT</a>   
+                @else
+                    <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route('auth.loginForm') }}">SIGN IN</a>
+                    <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route('registration.index') }}">REGISTER</a>
+                @endif
+            {{-- </div> --}}
         </div>
     </nav>
     <div class="container">
-            <div>
-                <header>
+            <div style="margin-top: 5%;">
+                {{-- <header>
                     <h2>@yield('title')</h2>
-                </header>
+                </header> --}}
                 @if (session('error'))
                     <div class="alert alert-danger" role="alert">
                         {{ session('error') }}
