@@ -11,7 +11,10 @@ use Illuminate\Support\Facades\DB;
 class GodController extends Controller
 {
     public function viewall(){
-        
+        $gods = God::with(['pantheon', 'type','damage'])->get();
+        return view('characters.show', [
+            'gods' => $gods,
+        ]);
     }
 
     public function random(){

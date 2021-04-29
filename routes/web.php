@@ -32,10 +32,7 @@ Route::get('/login',[AuthController::class, 'loginForm'])-> name('auth.loginForm
 Route::post('/login',[AuthController::class, 'login'])-> name('auth.login');
 Route::get('/profile',[ProfileController::class, 'index'])-> name('profile.index');
 Route::post('/logout',[AuthController::class, 'logout'])-> name('auth.logout');
-
-Route::get('/gods', function () {
-    return view('characters.show');
-})->name('gods');
+Route::get('/gods',[GodController::class, 'viewall'])->name('gods');
 
 Route::get('/about', function () {
     return view('landing.about');
