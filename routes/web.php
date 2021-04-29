@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\GodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ if (env('APP_ENV') !== 'local') {
 
 
 Route::get('/', [SmiteAPI::class, 'motd'])->name('home');
+Route::get('/random', [GodController::class, 'random'])->name('randomize');
 Route::get('/register',[RegistrationController::class, 'index'])-> name('registration.index');
 Route::post('/register',[RegistrationController::class, 'register'])-> name('register');
 Route::get('/login',[AuthController::class, 'loginForm'])-> name('auth.loginForm');

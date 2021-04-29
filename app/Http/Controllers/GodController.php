@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\God;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +15,17 @@ class GodController extends Controller
     }
 
     public function random(){
+
+
         $total_gods = DB::table('gods')->count();
+        $god_chosen_index = rand(1,$total_gods);
+        $random_god = God::with(['pantheon', 'type','damage'])->find($god_chosen_index);
+
+        return view('characters.random', [
+            'name' => $random_god->name,
+            'pantheon' => $random_god->pantheon->name,
+            'type' => $random_god->type->role_type,
+            'damage' => $random_god->damage->damage_type
+        ]);
     }
 }

@@ -13,7 +13,7 @@
             {{-- <div class ="navbar-nav"> --}}
                 <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route('home') }}">HOME</a>
                 <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route('about') }}">ABOUT</a>
-                <a class="nav-item nav-link" style="color: #D4D4D4" href="/">RANDOMIZE!</a>
+                <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route("randomize") }}">RANDOMIZE!</a>
                 <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route('gods') }}">GODS</a>
                 @if(Auth::check())
                     <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route('profile.index') }}">PROFILE</a>    
