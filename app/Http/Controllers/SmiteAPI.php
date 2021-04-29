@@ -16,7 +16,6 @@ class SmiteAPI extends Controller
         $session_id="";
         
         if(!Cache::has('session')){
-            print("create");
             $hash = env('SMITE_DEVID')."createsession".env('SMITE_AUTH').gmdate("YmdHis");
             $sign = (string)md5($hash);
             $response = json_decode(Http::get(

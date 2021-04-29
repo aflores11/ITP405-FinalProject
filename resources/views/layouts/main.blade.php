@@ -29,7 +29,7 @@
         </div>
     </nav>
     <div class="container">
-            <div style="margin-top: 5%;">
+            <div style="margin-top: 6%;">
                 {{-- <header>
                     <h2>@yield('title')</h2>
                 </header> --}}
