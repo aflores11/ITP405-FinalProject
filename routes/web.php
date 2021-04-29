@@ -25,6 +25,7 @@ if (env('APP_ENV') !== 'local') {
 
 
 Route::get('/', [SmiteAPI::class, 'motd'])->name('home');
+Route::get('/check', [SmiteAPI::class, 'check'])->name('check');
 Route::get('/random', [GodController::class, 'random'])->name('randomize');
 Route::get('/register',[RegistrationController::class, 'index'])-> name('registration.index');
 Route::post('/register',[RegistrationController::class, 'register'])-> name('register');
@@ -33,6 +34,7 @@ Route::post('/login',[AuthController::class, 'login'])-> name('auth.login');
 Route::get('/profile',[ProfileController::class, 'index'])-> name('profile.index');
 Route::post('/logout',[AuthController::class, 'logout'])-> name('auth.logout');
 Route::get('/gods',[GodController::class, 'viewall'])->name('gods');
+
 
 Route::get('/about', function () {
     return view('landing.about');

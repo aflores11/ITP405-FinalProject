@@ -69,4 +69,41 @@ class SmiteAPI extends Controller
 
         
     }
+
+    public function check(){
+        $session_id="";
+        
+        if(!Cache::has('session')){
+            $hash = env('SMITE_DEVID')."createsession".env('SMITE_AUTH').gmdate("YmdHis");
+            $sign = (string)md5($hash);
+            $response = json_decode(Http::get(
+                "http://api.smitegame.com/smiteapi.svc/createsessionJson/".env('SMITE_DEVID')."/".$sign."/".gmdate("YmdHis")
+            ));
+            $session_id = $response->session_id;
+            Cache::put('session', $session_id, now()->addMinutes(15)); // sessions are dsigned by Hirez to last only 15 minutes 
+            
+        }
+        else{
+            $session_id = Cache::get('session');
+        }
+
+        $hash = env('SMITE_DEVID')."getdataused".env('SMITE_AUTH').gmdate("YmdHis");
+        $signature1=(string)md5($hash);
+        
+        $data =Http::get(
+            "http://api.smitegame.com/smiteapi.svc/getdatausedJson/".env('SMITE_DEVID')."/".$signature1."/".$session_id."/".gmdate("YmdHis")
+        );
+
+        $hash = env('SMITE_DEVID')."getmotd".env('SMITE_AUTH').gmdate("YmdHis");
+        $signature1=(string)md5($hash);
+        
+        $motd =Http::get(
+            "http://api.smitegame.com/smiteapi.svc/getmotdJson/".env('SMITE_DEVID')."/".$signature1."/".$session_id."/".gmdate("YmdHis")
+        );
+
+        return view('landing.check', [
+            'check' => $data,
+            'motd' => $motd
+        ]);
+    }
 }
