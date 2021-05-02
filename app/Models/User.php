@@ -52,8 +52,8 @@ class User extends Authenticatable
         return $this->role->slug === 'admin';
     }
 
-    public function favorites(){
-        return $this->belongsToMany(Favorite::class);
+    public function gods(){
+        return $this->belongsToMany(God::class);
     }
 
     public function isfav($godID){

@@ -12,10 +12,10 @@ class ProfileController extends Controller
     public function index(){
 
         $user = Auth::user();
-        $favorites = Favorite::with(['user', 'god'])->where('user_id', '=', $user->id)->get();
+        // $favorites = $user->gods();
+        // dd($favorites);
         return view('profile.index',[
             'user' => $user,
-            'favorites' => $favorites
         ]);
     }
 }

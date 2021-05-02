@@ -36,18 +36,26 @@ class GodController extends Controller
 
     public function fav(Request $req){
         $god_id = $req->input('favorite');
-        $query = Favorite::where('user_id','=',Auth::user()->id)->where('god_id','=',$god_id)->first();
+        $user = Auth::user();
+        $query = DB::table('god_user')->where('user_id','=',$user->id)->where('god_id','=',$god_id)->first();
         if($query){
-            $query->delete();
+            $user->gods()->detach($god_id);
         }
         else{
-
-            $new_entry = new Favorite();
-            $new_entry->user_id = Auth::user()->id;
-            $new_entry->god_id = $god_id;
-            $new_entry->save();
-
+            $user->gods()->attach($god_id);
         }
+        // $query = Favorite::where('user_id','=',Auth::user()->id)->where('god_id','=',$god_id)->first();
+        // if($query){
+        //     $query->delete();
+        // }
+        // else{
+
+        //     $new_entry = new Favorite();
+        //     $new_entry->user_id = Auth::user()->id;
+        //     $new_entry->god_id = $god_id;
+        //     $new_entry->save();
+
+        // }
         return redirect()->back()->with('success', 'saved');
     }
 }

@@ -28,5 +28,9 @@ class God extends Model
     public function favorites(){
         return $this->belongsToMany(Favorite::class);
     }
+
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
      
 }
