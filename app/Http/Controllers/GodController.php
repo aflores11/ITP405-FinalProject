@@ -14,8 +14,17 @@ class GodController extends Controller
 {
     public function viewall(){
         $gods = God::with(['pantheon', 'type','damage'])->get();
-        return view('characters.show', [
+        $fav_array = null;
+        if(Auth::check()){
+            $favorites = Auth::user()->gods;
+            $fav_array = array();
+            foreach($favorites as $f){
+                $fav_array[] = $f->id;
+            }
+        }
+        return view('characters.all', [
             'gods' => $gods,
+            'favorites' => $fav_array
         ]);
     }
 
@@ -44,18 +53,13 @@ class GodController extends Controller
         else{
             $user->gods()->attach($god_id);
         }
-        // $query = Favorite::where('user_id','=',Auth::user()->id)->where('god_id','=',$god_id)->first();
-        // if($query){
-        //     $query->delete();
-        // }
-        // else{
-
-        //     $new_entry = new Favorite();
-        //     $new_entry->user_id = Auth::user()->id;
-        //     $new_entry->god_id = $god_id;
-        //     $new_entry->save();
-
-        // }
         return redirect()->back()->with('success', 'saved');
+    }
+
+    public function show($id){
+        $god = God::with(['pantheon', 'type','damage'])->find($id);
+        return view('characters.show', [
+            'god' => $god,
+        ]);
     }
 }

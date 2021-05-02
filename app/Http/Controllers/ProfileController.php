@@ -12,8 +12,6 @@ class ProfileController extends Controller
     public function index(){
 
         $user = Auth::user();
-        // $favorites = $user->gods();
-        // dd($favorites);
         return view('profile.index',[
             'user' => $user,
         ]);

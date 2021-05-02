@@ -34,6 +34,7 @@ Route::post('/login',[AuthController::class, 'login'])-> name('auth.login');
 Route::get('/profile',[ProfileController::class, 'index'])-> name('profile.index');
 Route::post('/logout',[AuthController::class, 'logout'])-> name('auth.logout');
 Route::get('/gods',[GodController::class, 'viewall'])->name('gods');
+Route::get('/gods/{id}',[GodController::class, 'show'])->name('god');
 Route::post('/gods',[GodController::class, 'fav'])-> name('favorite');
 
 

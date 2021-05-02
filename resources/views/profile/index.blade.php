@@ -53,7 +53,9 @@
         @foreach ($user->gods as $god )
             <div style="background-color:#6E6E6E;" class = "p-5 ms-2 me-2 god_card">
                 <h1 class="text_display" >{{ $god->name }}</h1>
-                <img src="{{ URL::to('/') }}/images/{{ preg_replace('/\s+/', '-', strtolower(preg_replace('/\'/', '', $god->name))) }}.jpg" class="image_custom" alt="Image" />
+                <a href="{{ route('god', ['id' => $god->id]) }}">
+                    <img src="{{ URL::to('/') }}/images/{{ preg_replace('/\s+/', '-', strtolower(preg_replace('/\'/', '', $god->name))) }}.jpg" class="image_custom" alt="Image" />
+                </a>
                 <p class="mt-2 text_display2">{{ $god->pantheon->name }}</p>
                 <p class="text_display2">{{ $god->damage->damage_type }}</p>
                 <p class="text_display2">{{ $god->type->role_type }}</p>
