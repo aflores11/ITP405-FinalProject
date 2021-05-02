@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'God {{ $god->id }}')
+@section('title', '{{ $god->name }}')
 
 @section('content')
     <style>
@@ -19,6 +19,9 @@
         .text_display2{
             font-size:1vw;
         }
+        .externalLinks{
+            display: block;
+        }
 
         @media (max-width: 775px){
             .god_card{
@@ -31,6 +34,7 @@
             .text_display2{
                 font-size:3vw;
             }
+
         }
     </style>
     <div class = "d-flex flex-row flex-wrap text-center justify-content-center">
@@ -48,8 +52,10 @@
                     </button>
                 @endif
         </div>
-        <div style="background-color:#6E6E6E;" class = "p-5 m-5 god_card">
+        <div style="background-color:#6E6E6E;" class = "p-5 m-5 god_card flex-column">
             <h1 class="text_display" >Need help making a build?</h1>
+            <a href="{{ 'https://smite.guru/builds/'.$god->name }}" class="externalLinks">Artemis Smite Guru Builds</a>
+            <a href="{{ 'https://smite.guru/builds/'.$god->name }}" class="externalLinks">Artemis Smite Guru Builds</a>
         </div>
     </div>
 @endsection
