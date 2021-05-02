@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Favorite;
 
 class GodController extends Controller
 {
@@ -30,5 +32,22 @@ class GodController extends Controller
             'type' => $random_god->type->role_type,
             'damage' => $random_god->damage->damage_type
         ]);
+    }
+
+    public function fav(Request $req){
+        $god_id = $req->input('favorite');
+        $query = Favorite::where('user_id','=',Auth::user()->id)->where('god_id','=',$god_id)->first();
+        if($query){
+            $query->delete();
+        }
+        else{
+
+            $new_entry = new Favorite();
+            $new_entry->user_id = Auth::user()->id;
+            $new_entry->god_id = $god_id;
+            $new_entry->save();
+
+        }
+        return redirect()->back()->with('success', 'saved');
     }
 }

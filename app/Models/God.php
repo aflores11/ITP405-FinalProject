@@ -24,5 +24,9 @@ class God extends Model
     public function damage(){
         return $this->belongsTo(Damage::class);
     }
+
+    public function favorites(){
+        return $this->belongsToMany(Favorite::class);
+    }
      
 }

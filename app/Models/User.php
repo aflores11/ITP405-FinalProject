@@ -6,6 +6,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
+use App\Models\Favorite;
+
 
 class User extends Authenticatable
 {
@@ -47,6 +50,14 @@ class User extends Authenticatable
 
     public function isAdmin(){
         return $this->role->slug === 'admin';
+    }
+
+    public function favorites(){
+        return $this->belongsToMany(Favorite::class);
+    }
+
+    public function isfav($godID){
+        return Favorite::with(['users', 'gods'])->where('user_id','=',$this->id)->where('god_id','=',$godID)->first();
     }
 
 }
