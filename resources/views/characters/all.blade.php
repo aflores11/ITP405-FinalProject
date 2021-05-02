@@ -7,10 +7,12 @@
         .image_custom{
             width: 100%;
             height: auto;
+            border-radius: 50px;
         }
         .god_card{
             width: 20%; 
             height:50%;
+            border-radius: 5px 95px 5px;
         }
 
         .text_display{

@@ -7,6 +7,7 @@
         .image_custom{
             width: 100%;
             height: auto;
+            border-radius: 50px;
         }
         .god_card{
             width: 35%; 

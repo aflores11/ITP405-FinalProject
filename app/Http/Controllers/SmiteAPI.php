@@ -90,7 +90,7 @@ class SmiteAPI extends Controller
         $hash = env('SMITE_DEVID')."getdataused".env('SMITE_AUTH').gmdate("YmdHis");
         $signature1=(string)md5($hash);
         
-        $data =Http::get(
+        $data = Http::get(
             "http://api.smitegame.com/smiteapi.svc/getdatausedJson/".env('SMITE_DEVID')."/".$signature1."/".$session_id."/".gmdate("YmdHis")
         );
 
@@ -101,8 +101,10 @@ class SmiteAPI extends Controller
             "http://api.smitegame.com/smiteapi.svc/getmotdJson/".env('SMITE_DEVID')."/".$signature1."/".$session_id."/".gmdate("YmdHis")
         );
 
-        return view('landing.check', [
-            'check' => $data,
+        
+
+        return view('admin.check', [
+            'check' => json_decode($data),
             'motd' => $motd
         ]);
     }

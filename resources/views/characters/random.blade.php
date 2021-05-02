@@ -11,6 +11,7 @@
         .god_card{
             width: 35%; 
             height:50%;
+            border-radius: 5px 95px 5px;
         }
         .text_display{
             font-size:2vw;

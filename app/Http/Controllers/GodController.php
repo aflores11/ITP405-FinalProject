@@ -58,13 +58,16 @@ class GodController extends Controller
         $god_id = $req->input('favorite');
         $user = Auth::user();
         $query = DB::table('god_user')->where('user_id','=',$user->id)->where('god_id','=',$god_id)->first();
+        $god = God::find($god_id);
         if($query){
             $user->gods()->detach($god_id);
+            return redirect()->back()->with('success', 'Removed '.$god->name.' from your favorites.');
         }
         else{
             $user->gods()->attach($god_id);
+            return redirect()->back()->with('success', 'Added '.$god->name.' to your favorites.');
         }
-        return redirect()->back()->with('success', 'saved');
+        
     }
 
     public function show($id){
