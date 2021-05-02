@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CustomAuthentication
+class AdminPrivilege
 {
     /**
      * Handle an incoming request.
@@ -17,11 +17,9 @@ class CustomAuthentication
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check()){
+        if(Auth::user()->isAdmin()){
             return $next($request);
         }
-        else{
-            return redirect()->route('auth.loginForm')->with('error', 'Sign in required to access.');
-        }
+        return back()->with('error', 'Not an Admin.');
     }
 }

@@ -35,11 +35,22 @@ class GodController extends Controller
         $god_chosen_index = rand(1,$total_gods);
         $random_god = God::with(['pantheon', 'type','damage'])->find($god_chosen_index);
 
+        $fav_array = null;
+        if(Auth::check()){
+            $favorites = Auth::user()->gods;
+            $fav_array = array();
+            foreach($favorites as $f){
+                $fav_array[] = $f->id;
+            }
+        }
+
         return view('characters.random', [
+            'id' => $random_god->id,
             'name' => $random_god->name,
             'pantheon' => $random_god->pantheon->name,
             'type' => $random_god->type->role_type,
-            'damage' => $random_god->damage->damage_type
+            'damage' => $random_god->damage->damage_type,
+            'favorites' => $fav_array,
         ]);
     }
 

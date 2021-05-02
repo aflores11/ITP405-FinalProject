@@ -24,23 +24,29 @@ if (env('APP_ENV') !== 'local') {
 }
 
 
+
 Route::get('/', [SmiteAPI::class, 'motd'])->name('home');
-Route::get('/check', [SmiteAPI::class, 'check'])->name('check');
 Route::get('/random', [GodController::class, 'random'])->name('randomize');
 Route::get('/register',[RegistrationController::class, 'index'])-> name('registration.index');
 Route::post('/register',[RegistrationController::class, 'register'])-> name('register');
 Route::get('/login',[AuthController::class, 'loginForm'])-> name('auth.loginForm');
 Route::post('/login',[AuthController::class, 'login'])-> name('auth.login');
-Route::get('/profile',[ProfileController::class, 'index'])-> name('profile.index');
-Route::post('/logout',[AuthController::class, 'logout'])-> name('auth.logout');
 Route::get('/gods',[GodController::class, 'viewall'])->name('gods');
-Route::get('/gods/{id}',[GodController::class, 'show'])->name('god');
-Route::post('/gods',[GodController::class, 'fav'])-> name('favorite');
+Route::get('/about', function () { return view('landing.about'); })->name('about');
 
 
-Route::get('/about', function () {
-    return view('landing.about');
-})->name('about');
+
+Route::middleware(['custom-auth'])->group(function(){
+    Route::middleware(['admin-privileges'])->group(function(){
+        Route::get('/check', [SmiteAPI::class, 'check'])->name('check');
+    });
+
+    Route::get('/profile',[ProfileController::class, 'index'])-> name('profile.index');
+    Route::post('/logout',[AuthController::class, 'logout'])-> name('auth.logout');
+    Route::get('/gods/{id}',[GodController::class, 'show'])->name('god');
+    Route::post('/gods',[GodController::class, 'fav'])-> name('favorite');
+});
+
 
 
 
