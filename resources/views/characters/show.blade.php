@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', '{{ $god->name }}')
+@section('title', $god->name)
 
 @section('content')
     <style>
@@ -21,8 +21,12 @@
         }
         .externalLinks{
             display: block;
+            text-decoration: none !important;
+            color: black;
         }
-
+        a:hover{
+            color:white;
+        }
         @media (max-width: 775px){
             .god_card{
                 width: max-content;
@@ -52,10 +56,15 @@
                     </button>
                 @endif
         </div>
-        <div style="background-color:#6E6E6E;" class = "p-5 m-5 god_card flex-column">
-            <h1 class="text_display" >Need help making a build?</h1>
-            <a href="{{ 'https://smite.guru/builds/'.$god->name }}" class="externalLinks">Artemis Smite Guru Builds</a>
-            <a href="{{ 'https://smite.guru/builds/'.$god->name }}" class="externalLinks">Artemis Smite Guru Builds</a>
+        <div class="flex-column">
+            <div style="background-color:#6E6E6E;" class = "p-5 m-5">
+                <h1 class="text_display" >Need help making a build?</h1>
+                <a href="{{ 'https://smite.guru/builds/'.$god->name }}" class="externalLinks">{{ $god->name }} Smite Guru Builds</a>
+                <a href="https://www.smitefire.com/smite/gods" class="externalLinks">Smite Fire</a>
+            </div>
+            <div>
+                <p>Some widely used items are:</p>
+            </div>
         </div>
     </div>
 @endsection

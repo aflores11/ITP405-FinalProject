@@ -1,7 +1,7 @@
 
 @extends('layouts.main')
 
-@section('title','Test')
+@section('title','API Status')
 
 @section('content')
     <div class="d-flex flex-column text-center">

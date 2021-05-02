@@ -17,6 +17,13 @@
             width: 20%; 
             height:50%;
         }
+        a.one{
+            text-decoration: none !important;
+            color:rgb(46, 46, 46);
+        }
+        a.one:hover{
+            color:white;
+        }
 
         .text_display{
             font-size:1.5vw;
@@ -24,6 +31,7 @@
         .text_display2{
             font-size:1vw;
         }
+    
 
 
         @media (max-width: 775px){
@@ -43,8 +51,9 @@
         <div style="background-color:#6E6E6E;" class = "m-2">
             <h3 class="aligncenter">Hello {{ $user->name }}</h3> 
             @if (Auth::user()->isAdmin())
-                <h5>Admin Privileges</h5>
-                <a href="{{ route('check') }}">API Status</a>
+                <h5 class="p-2">Admin Privileges</h5>
+                <a class="p-5 one" href="{{ route('check') }}">API Status</a>
+                <a class="p-5 one" href="{{ route('check') }}">Block User</a>
             @endif
             <h5 class="aligncenter">Here are your favorite gods</h5>
         </div>
