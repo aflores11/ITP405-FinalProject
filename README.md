@@ -5,10 +5,7 @@
 
 ### Database Schema  
 
-![Database Schema](public/assets/itp405_database_schema.pdf "Database Schema")
-
-
-
+![Database Schema!](public/assets/itp405_database_schema.pdf)
 
 
 ### What is the goal of your application?
