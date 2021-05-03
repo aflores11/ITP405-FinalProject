@@ -1,8 +1,11 @@
  # ITP405_Final_Project - Angel Flores
 
 
-[Final Project Link]
-(https://angelflo-finalproject.herokuapp.com/)
+[Final Project Link](https://angelflo-finalproject.herokuapp.com/)
+
+### Database Schema  
+
+![Database Schema](public/assets/itp405_database_schema.pdf "Database Schema")
 
 
 
