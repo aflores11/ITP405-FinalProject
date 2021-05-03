@@ -41,7 +41,7 @@
             overflow: hidden;
         }
         .commentsInputCont{
-            height: 15%;
+            height: 20%;
             width: 76%;
             overflow: scroll;
         }
