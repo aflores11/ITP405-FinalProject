@@ -113,7 +113,7 @@
                         <input type="hidden" name="godID" value="{{ $god->id }}" id="{{ $god->id }}">
                         <input type="hidden" name="userID" value="{{ Auth::user()->id }}" id="userID">
                         <div>
-                            <textarea id="comment" name="comment" rows="3" style="resize:none;" placeholder="Your comment here...">{{ old('comment') }}</textarea>
+                            <textarea id="comment" name="comment" rows="3" cols="25" style="resize:none;" placeholder="Your comment here...">{{ old('comment') }}</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary cbtn">
                             Submit
