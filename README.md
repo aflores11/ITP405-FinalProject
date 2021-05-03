@@ -1,7 +1,9 @@
  # ITP405_Final_Project - Angel Flores
 
-
-[Final Project Link](https://angelflo-finalproject.herokuapp.com/)
+<ul>
+<li> [Final Project Link](https://angelflo-finalproject.herokuapp.com/) </li>
+<li>[Zoom](https://usc.zoom.us/rec/share/UHdF6dqlho0tYdIuZnARm9GR2EEhk8mVk-cIL04tsz_CmpqlcUwORvNnAyerclAh.184bNhYr_qc6DOye?startTime=1620019799000)</li>
+</ul>
 
 ### Database Schema  
 
