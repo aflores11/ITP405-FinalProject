@@ -71,9 +71,20 @@ class GodController extends Controller
     }
 
     public function show($id){
+        
+        $fav_array = null;
+        if(Auth::check()){
+            $favorites = Auth::user()->gods;
+            $fav_array = array();
+            foreach($favorites as $f){
+                $fav_array[] = $f->id;
+            }
+        }
+
         $god = God::with(['pantheon', 'type','damage'])->find($id);
         return view('characters.show', [
             'god' => $god,
+            'favorites' => $fav_array,
         ]);
     }
 }

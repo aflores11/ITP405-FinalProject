@@ -29,7 +29,9 @@ class CommentController extends Controller
             return redirect()->route('god', ['id' => $god_id])->with(['success', 'Saved your comment.']);
         }
         else{
+
             $comment = Comment::find($request->input('commentID'));
+            $this->authorize('delete', $comment);
             $god = God::find($request->input('godID'));
             $god->comments()->detach($comment->id);
             $comment->delete();
@@ -50,9 +52,6 @@ class CommentController extends Controller
         return redirect()->back()->with(['success', 'Saved your comment.']);
     }
 
-    public function delete(Request $request){
-        
-    }
 
 
 }
