@@ -13,7 +13,7 @@
                 <p>It was then made to have more functionality for users that are signed in.</p>
             <h5>How does this website work?</h5>
                 <p>You do not need to sign in to choose a random god. Just choose the randomize link on the navigation menu and it will present you
-                    with a random god. You can also view all the available gods in Smite without having to sign in.
+                    with a random god. You can also view all the available gods that are in Smite without having to sign in.
                 </p>
             <h5>What are the benefits of creating an account? Is it safe?</h5>
                 <p>The benefits of creating an account are that you can keep a list of all your favorite gods. When signed in, you can click on any god's image which will then take you to a page 
