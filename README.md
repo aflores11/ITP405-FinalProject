@@ -1,7 +1,7 @@
  # ITP405_Final_Project - Angel Flores
 
 <ul>
-<li><a href="https://angelflo-finalproject.herokuapp.com/">Final Project Link</a>
+<li><a href="https://angelflo-finalproject.herokuapp.com/about">Final Project Link</a>
 <li><a href="https://usc.zoom.us/rec/share/UHdF6dqlho0tYdIuZnARm9GR2EEhk8mVk-cIL04tsz_CmpqlcUwORvNnAyerclAh.184bNhYr_qc6DOye?startTime=1620019799000">Zoom</a></li>
 </ul>
 
