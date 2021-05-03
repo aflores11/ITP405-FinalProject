@@ -56,8 +56,8 @@ class User extends Authenticatable
         return $this->belongsToMany(God::class);
     }
 
-    public function isfav($godID){
-        return Favorite::with(['users', 'gods'])->where('user_id','=',$this->id)->where('god_id','=',$godID)->first();
+    public function comments(){
+        return $this->hasMany(Comment::class);
     }
 
 }

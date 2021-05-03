@@ -21,6 +21,9 @@
         .text_display2{
             font-size:1vw;
         }
+        .text_comment{
+            background-color: white;
+        }
         .externalLinks{
             display: block;
             text-decoration: none !important;
@@ -101,38 +104,48 @@
             <div style="background-color:#6E6E6E;" class = "pt-3 m-5 commentsInputCont">
                 <div class="commentTitle flex-column" >    
                     <h4>Add Comment</h4>
-                    <div>
-                        <textarea id="txtArea" name="comment" rows="3" style="resize:none;" placeholder="Your comment here..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary cbtn">
-                        Submit
-                    </button>
+                    @error('comment')
+                        <small class="text-danger bg-light">{{ $message }}</small>
+                    @enderror
+                    <form action="{{ route('handle_comment',['id' => $god->id]) }}" method="POST">
+                        @csrf
+                        <input id="req" type="hidden" name="req" value="new"/>
+                        <input type="hidden" name="godID" value="{{ $god->id }}" id="{{ $god->id }}">
+                        <input type="hidden" name="userID" value="{{ $god->id }}" id="{{ $god->id }}">
+                        <div>
+                            <textarea id="comment" name="comment" rows="3" style="resize:none;" placeholder="Your comment here...">{{ old('comment') }}</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary cbtn">
+                            Submit
+                        </button>
+                    </form>
                 </div>
             </div>
             <div style="background-color:#6E6E6E;" class = "p-5 m-5 commentsContainer">
-                <div class="commentinnercon mb-5">
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                    <h1 class="text_display" >Comments</h1>
-                </div>
+                @if (count($god->comments) == 0)
+                    <div class="text_display">
+                        <p>Be the first to comment!</p>
+                    </div>  
+                @else
+                    <div class="commentinnercon mb-5">
+                        @foreach ($god->comments as $comment )
+                            <div class="text_display">
+                                <p style="display:block" class="text_comment">{{ $comment->text }}</p>
+                                <form method="POST" action="{{ route('handle_comment',['id' => $god->id]) }}">
+                                    @csrf
+                                    <input id="req" type="hidden" name="req" value="delete"/>
+                                    <input id="commentID" type="hidden" name="commentID" value="{{ $comment->id }}"/>
+                                    <input id="godID" type="hidden" name="godID" value="{{ $god->id }}"/>
+                                    <input type="hidden" name="commentID" value="{{ $comment->id }}"/>
+                                    <div style="display:block; margin-top: -19px;">
+                                        <p style="display: inline-flex; font-size:0.5vw; color:white;">Author: {{ $comment->user->name }}</p>
+                                        <button class="btn btn-link externalLinks" style="display: inline-flex; font-size:0.5vw; color:white; margin-top:3px;" href="/">Delete</button>
+                                    </div>
+                                </form>
+                            </div>  
+                        @endforeach
+                    </div>   
+                @endif
             </div>
         </div>
     </div>

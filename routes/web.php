@@ -8,6 +8,7 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\GodController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +49,9 @@ Route::middleware(['custom-auth'])->group(function(){
     Route::middleware(['not-blocked'])->group(function(){
         Route::get('/profile',[ProfileController::class, 'index'])-> name('profile.index');
         Route::get('/gods/{id}',[GodController::class, 'show'])->name('god');
+        Route::post('/gods/{id}',[CommentController::class, 'handle_comment'])->name('handle_comment');
         Route::post('/gods',[GodController::class, 'fav'])-> name('favorite');
+
     });
 
     Route::post('/logout',[AuthController::class, 'logout'])-> name('auth.logout');
