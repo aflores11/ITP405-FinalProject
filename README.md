@@ -1,9 +1,16 @@
  # ITP405_Final_Project - Angel Flores
 
+
+[Final Project Link]
+(https://angelflo-finalproject.herokuapp.com/)
+
+
+
+
+
 ### What is the goal of your application?
 
-`The Goal of my application is to Randomize the characters of a game called Smite. It will have the  
-option of choosing to randomize all gods or gods by category such as mages, warriors, hunters etc.  
+`The Goal of my application is to Randomize the characters of a game called Smite.  
 `
 
 ### Who is the primary audience?
@@ -16,15 +23,15 @@ This game can easily be made to randomize other characters of other games as wel
 ### What will the CRUD (Create, Read, Update, Delete) operations be?
 
 `
-Create: People will be able to create new gods to add to the list as they are released over time  
+Create: People will be able to add any god to their favorites list and also create new comments for any god.  
 Read: There will be a set database with information of Gods (their category) which will be displayed with images  
-Update: People will have the ability to update their preferences in search and hold a list of favorites  
-Delete: PLayers can delete Gods/Characters that they absolutely do not like.  
+Update: Admin can block and unblock users
+Delete: PLayers can delete their comments or remove gods from their favorites.  
 `
 
 ### What additional feature would you like to build?
 
 `
-I want to have players make accounts where they can choose which gods they want to randomize and have to abaility to update and delete   
-characters from their list whenever they want.  
+I want to have players make accounts where they can choose favorite gods. This will provide quick access to builds within two-clicks.
+I will also build a comment system to build sense of community.  
 `
