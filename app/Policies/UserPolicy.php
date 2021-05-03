@@ -9,10 +9,18 @@ class UserPolicy
 {
     use HandlesAuthorization;
 
+    public function before(User $user)
+    {
+        if ($user->isAdmin()) {
+            return true;
+        }
 
+    }
 
     public function can_block(User $user){
-        return $user->isAdmin();
+        if ($user->isAdmin()) {
+            return true;
+        }
     }
 
     /**

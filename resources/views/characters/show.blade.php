@@ -111,7 +111,7 @@
                         @csrf
                         <input id="req" type="hidden" name="req" value="new"/>
                         <input type="hidden" name="godID" value="{{ $god->id }}" id="{{ $god->id }}">
-                        <input type="hidden" name="userID" value="{{ $god->id }}" id="{{ $god->id }}">
+                        <input type="hidden" name="userID" value="{{ Auth::user()->id }}" id="userID">
                         <div>
                             <textarea id="comment" name="comment" rows="3" style="resize:none;" placeholder="Your comment here...">{{ old('comment') }}</textarea>
                         </div>
@@ -138,8 +138,10 @@
                                     <input id="godID" type="hidden" name="godID" value="{{ $god->id }}"/>
                                     <input type="hidden" name="commentID" value="{{ $comment->id }}"/>
                                     <div style="display:block; margin-top: -19px;">
-                                        <p style="display: inline-flex; font-size:0.5vw; color:white;">Author: {{ $comment->user->name }}</p>
-                                        <button class="btn btn-link externalLinks" style="display: inline-flex; font-size:0.5vw; color:white; margin-top:3px;" href="/">Delete</button>
+                                        <p style="display: inline-flex; font-size:0.5vw; color:white;">By: {{ $comment->user->name }}</p>
+                                        @can('delete', $comment)
+                                            <button class="btn btn-link externalLinks" style="display: inline-flex; font-size:0.5vw; color:white; margin-top:3px;" href="/">Delete</button>
+                                        @endcan
                                     </div>
                                 </form>
                             </div>  
