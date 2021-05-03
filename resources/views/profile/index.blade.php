@@ -55,7 +55,7 @@
             @if ($user->isAdmin())
                 <h5 class="p-2">Admin Privileges</h5>
                 <a class="p-5 one" href="{{ route('check') }}">API Status</a>
-                <a class="p-5 one" href="{{ route('check') }}">Block User</a>
+                <a class="p-5 one" href="{{ route('blockPage') }}">Block User</a>
             @endif
             <h5 class="aligncenter">Here are your favorite gods</h5>
         </div>

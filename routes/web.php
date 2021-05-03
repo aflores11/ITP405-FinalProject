@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SmiteAPI;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
@@ -39,12 +40,19 @@ Route::get('/about', function () { return view('landing.about'); })->name('about
 Route::middleware(['custom-auth'])->group(function(){
     Route::middleware(['admin-privileges'])->group(function(){
         Route::get('/check', [SmiteAPI::class, 'check'])->name('check');
+        Route::get('/block', [AdminController::class, 'block_page'])->name('blockPage');
+        Route::post('/block', [AdminController::class, 'block_unblock_user'])->name('block-unblock');
+
     });
 
-    Route::get('/profile',[ProfileController::class, 'index'])-> name('profile.index');
+    Route::middleware(['not-blocked'])->group(function(){
+        Route::get('/profile',[ProfileController::class, 'index'])-> name('profile.index');
+        Route::get('/gods/{id}',[GodController::class, 'show'])->name('god');
+        Route::post('/gods',[GodController::class, 'fav'])-> name('favorite');
+    });
+
     Route::post('/logout',[AuthController::class, 'logout'])-> name('auth.logout');
-    Route::get('/gods/{id}',[GodController::class, 'show'])->name('god');
-    Route::post('/gods',[GodController::class, 'fav'])-> name('favorite');
+    Route::view('/blocked', 'profile.block')->name('blocked');
 });
 
 
