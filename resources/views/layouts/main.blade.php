@@ -10,7 +10,6 @@
 <body style="background-color:#404040;">
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">
         <div class="container">
-            {{-- <div class ="navbar-nav"> --}}
                 <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route('home') }}">HOME</a>
                 <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route('about') }}">ABOUT</a>
                 <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route("randomize") }}">RANDOMIZE!</a>
@@ -25,14 +24,10 @@
                     <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route('auth.loginForm') }}">SIGN IN</a>
                     <a class="nav-item nav-link" style="color: #D4D4D4" href="{{ route('registration.index') }}">REGISTER</a>
                 @endif
-            {{-- </div> --}}
         </div>
     </nav>
     <div class="container">
             <div style="margin-top: 6%;">
-                {{-- <header>
-                    <h2>@yield('title')</h2>
-                </header> --}}
                 @if (session('error'))
                     <div class="alert alert-danger" role="alert">
                         {{ session('error') }}
