@@ -12,9 +12,10 @@
         .god_card{
             width: 35%; 
             height:50%;
+            border-radius: 5px 95px 5px;
         }
         .text_display{
-            display: inline;
+            display: block;
             font-size:1.2vw;
         }
         .text_display2{
@@ -24,6 +25,40 @@
             display: block;
             text-decoration: none !important;
             color: black;
+        }
+        .commentTitle{
+            position: sticky;
+            top: 0%;
+            z-index: 3;
+            
+        }
+        .commentsContainer{
+            height: 33%;
+            width: 76%;
+            overflow: hidden;
+        }
+        .commentsInputCont{
+            height: 15%;
+            width: 76%;
+            overflow: scroll;
+        }
+        .commentinnercon{
+            position: sticky;
+            width: 100%;
+            height: 100%;
+            overflow: scroll !important;
+        }
+        .commentinnercon::-webkit-scrollbar {
+            display: none;
+        }
+        .commentsContainer::-webkit-scrollbar {
+            display: none;
+        }
+        .commentsInputCont::-webkit-scrollbar {
+            display: none;
+        }
+        .cbtn{
+            background-color: black;
         }
         a:hover{
             color:white;
@@ -63,8 +98,41 @@
                 <a href="{{ 'https://smite.guru/builds/'.$god->name }}" class="externalLinks">{{ $god->name }} Smite Guru Builds</a>
                 <a href="https://www.smitefire.com/smite/gods" class="externalLinks">Smite Fire</a>
             </div>
-            <div>
-                <p>Some widely used items are:</p>
+            <div style="background-color:#6E6E6E;" class = "pt-3 m-5 commentsInputCont">
+                <div class="commentTitle flex-column" >    
+                    <h4>Add Comment</h4>
+                    <div>
+                        <textarea id="txtArea" name="comment" rows="3" style="resize:none;" placeholder="Your comment here..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary cbtn">
+                        Submit
+                    </button>
+                </div>
+            </div>
+            <div style="background-color:#6E6E6E;" class = "p-5 m-5 commentsContainer">
+                <div class="commentinnercon mb-5">
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                    <h1 class="text_display" >Comments</h1>
+                </div>
             </div>
         </div>
     </div>

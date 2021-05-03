@@ -19,7 +19,7 @@ class RegistrationController extends Controller
         $request->validate([
             'username' => 'required|max:50|unique:users,name',
             'email' => 'required|email:rfc|unique:users,email',
-            'password' => 'required'
+            'password' => 'required|min:6'
         ]);
 
         $user = new User();
